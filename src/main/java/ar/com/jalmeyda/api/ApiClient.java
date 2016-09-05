@@ -1,6 +1,6 @@
 package ar.com.jalmeyda.api;
 
-import ar.com.jalmeyda.domain.Location;
+import ar.com.jalmeyda.model.Location;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -32,7 +32,6 @@ public class ApiClient {
 	}
 
 	public List<Location> getLocations(String cityName) {
-		return Arrays.asList(
-						restTemplate.getForEntity(URL, Location[].class, cityName).getBody());
+		return Arrays.asList(restTemplate.getForEntity(URL, Location[].class, cityName).getBody());
 	}
 }

@@ -1,7 +1,7 @@
 package ar.com.jalmeyda.api;
 
-import ar.com.jalmeyda.domain.Location;
-import ar.com.jalmeyda.domain.builder.LocationBuilder;
+import ar.com.jalmeyda.model.Location;
+import ar.com.jalmeyda.model.builder.LocationBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 

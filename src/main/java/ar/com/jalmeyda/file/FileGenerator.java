@@ -1,6 +1,6 @@
 package ar.com.jalmeyda.file;
 
-import ar.com.jalmeyda.domain.Location;
+import ar.com.jalmeyda.model.Location;
 
 import java.io.*;
 import java.util.List;

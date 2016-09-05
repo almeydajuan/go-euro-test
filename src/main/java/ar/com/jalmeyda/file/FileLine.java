@@ -1,7 +1,6 @@
 package ar.com.jalmeyda.file;
 
-import ar.com.jalmeyda.domain.GeoPosition;
-import ar.com.jalmeyda.domain.Location;
+import ar.com.jalmeyda.model.Location;
 
 /**
  * Created by Juan Almeyda on 9/4/2016.

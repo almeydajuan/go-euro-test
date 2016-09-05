@@ -1,7 +1,7 @@
 package ar.com.jalmeyda;
 
 import ar.com.jalmeyda.api.ApiClient;
-import ar.com.jalmeyda.domain.Location;
+import ar.com.jalmeyda.model.Location;
 import ar.com.jalmeyda.file.FileGenerator;
 
 import java.util.List;

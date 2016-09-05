@@ -1,4 +1,4 @@
-package ar.com.jalmeyda.domain;
+package ar.com.jalmeyda.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

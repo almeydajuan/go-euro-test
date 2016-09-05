@@ -1,7 +1,6 @@
-package ar.com.jalmeyda.domain.builder;
+package ar.com.jalmeyda.model.builder;
 
-import ar.com.jalmeyda.domain.GeoPosition;
-import ar.com.jalmeyda.domain.Location;
+import ar.com.jalmeyda.model.Location;
 
 import java.math.BigDecimal;
 
