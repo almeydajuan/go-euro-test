@@ -15,9 +15,13 @@ public class FileGeneratorTest {
 
 	@Test
 	public void testLineGeneration() {
+		// GIVEN
 		Location location = getDefaultLocation();
+
+		// WHEN
 		FileLine fileLine = new FileLine(location);
 
+		// THEN
 		Assert.assertEquals("377078,Potsdam,location,52.39886,13.06566", fileLine.generateLine());
 	}
 
@@ -28,10 +32,10 @@ public class FileGeneratorTest {
 		Location location = getDefaultLocation();
 		List<Location> locations = Arrays.asList(location);
 
-		//WHEN
+		// WHEN
 		new FileGenerator().generateFile(cityName, locations);
 
-		//THEN
+		// THEN
 		BufferedReader reader = new BufferedReader(new FileReader(new File(cityName + ".csv")));
 		Assert.assertEquals(new FileLine(location).generateLine(), reader.readLine());
 		reader.close();
@@ -45,10 +49,10 @@ public class FileGeneratorTest {
 		Location location2 = getAnotherLocation();
 		List<Location> locations = Arrays.asList(location1, location2);
 
-		//WHEN
+		// WHEN
 		new FileGenerator().generateFile(cityName, locations);
 
-		//THEN
+		// THEN
 		BufferedReader reader = new BufferedReader(new FileReader(new File(cityName + ".csv")));
 		Assert.assertEquals(new FileLine(location1).generateLine(), reader.readLine());
 		Assert.assertEquals(new FileLine(location2).generateLine(), reader.readLine());
@@ -61,10 +65,10 @@ public class FileGeneratorTest {
 		String cityName = "NonExistent";
 		List<Location> locations = new LinkedList<>();
 
-		//WHEN
+		// WHEN
 		new FileGenerator().generateFile(cityName, locations);
 
-		//THEN
+		// THEN
 		BufferedReader reader = new BufferedReader(new FileReader(new File(cityName + ".csv")));
 		Assert.assertEquals("", reader.readLine());
 		reader.close();

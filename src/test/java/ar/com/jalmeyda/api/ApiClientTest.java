@@ -15,17 +15,25 @@ public class ApiClientTest {
 
 	@Test
 	public void testGetBerlin() {
+		// GIVEN
 		String berlin = "Berlin";
+
+		// WHEN
 		List<Location> locations = new ApiClient().getLocations(berlin);
 
+		// THEN
 		Assert.assertTrue(locations.contains(getBerlinLocation()));
 	}
 
 	@Test
 	public void testGetUnknownCity() {
+		// GIVEN
 		String unknownCity = "unknownCity";
+
+		// WHEN
 		List<Location> locations = new ApiClient().getLocations(unknownCity);
 
+		// THEN
 		Assert.assertTrue(locations.isEmpty());
 	}
 
