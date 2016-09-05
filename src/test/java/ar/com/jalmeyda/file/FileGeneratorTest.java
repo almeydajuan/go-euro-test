@@ -2,8 +2,7 @@ package ar.com.jalmeyda.file;
 
 import ar.com.jalmeyda.model.Location;
 import ar.com.jalmeyda.model.builder.LocationBuilder;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -35,6 +34,7 @@ public class FileGeneratorTest {
 		//THEN
 		BufferedReader reader = new BufferedReader(new FileReader(new File(cityName + ".csv")));
 		Assert.assertEquals(new FileLine(location).generateLine(), reader.readLine());
+		reader.close();
 	}
 
 	@Test
@@ -52,6 +52,7 @@ public class FileGeneratorTest {
 		BufferedReader reader = new BufferedReader(new FileReader(new File(cityName + ".csv")));
 		Assert.assertEquals(new FileLine(location1).generateLine(), reader.readLine());
 		Assert.assertEquals(new FileLine(location2).generateLine(), reader.readLine());
+		reader.close();
 	}
 
 	@Test
@@ -66,6 +67,25 @@ public class FileGeneratorTest {
 		//THEN
 		BufferedReader reader = new BufferedReader(new FileReader(new File(cityName + ".csv")));
 		Assert.assertEquals("", reader.readLine());
+		reader.close();
+	}
+
+	@After
+	public void deleteGeneratedFiles() throws Exception {
+		final File folder = new File(".");
+		final File[] files = folder.listFiles(new FilenameFilter() {
+			@Override
+			public boolean accept(
+					final File dir,
+					final String name) {
+				return name.matches(".*\\.csv");
+			}
+		});
+		for (final File file : files) {
+			if (!file.delete()) {
+				System.err.println("Can't remove " + file.getAbsolutePath());
+			}
+		}
 	}
 
 	private Location getAnotherLocation() {
