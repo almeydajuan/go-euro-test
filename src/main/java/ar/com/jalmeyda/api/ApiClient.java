@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
@@ -21,14 +22,11 @@ public class ApiClient {
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-		MappingJackson2HttpMessageConverter jackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
-		jackson2HttpMessageConverter.setObjectMapper(objectMapper);
-
-		List<HttpMessageConverter<?>> messageConverters = new LinkedList<>();
-		messageConverters.add(jackson2HttpMessageConverter);
+		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+		converter.setObjectMapper(objectMapper);
 
 		restTemplate = new RestTemplate();
-		restTemplate.setMessageConverters(messageConverters);
+		restTemplate.getMessageConverters().add(converter);
 	}
 
 	public List<Location> getLocations(String cityName) {
